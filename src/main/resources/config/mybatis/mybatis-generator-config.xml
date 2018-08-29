@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="mybatis/mybatis.properties"/>
+    <context id="SpringBootTables">
+
+        <!-- 阻止生成自动注释 -->
+        <commentGenerator>
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}" password="${jdbc.password}"/>
+
+        <!-- Java 模型对象生辰器 -->
+        <javaModelGenerator targetPackage="com.spring.boot.mybatis.entity"
+                            targetProject="${user.dir}/src/main/java"/>
+
+        <!-- SQL Mapper XML 生成器 -->
+        <sqlMapGenerator  targetPackage="config.mybatis.mappers" targetProject="${user.dir}/src/main/resources"/>
+
+        <!-- SQL Mapper Java 接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.iclimit.blog.common.mappers"
+                             targetProject="${user.dir}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="user">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+            <columnOverride column="name" property="name"/>
+            <columnOverride column="age" property="age"/>
+            <columnOverride column="height" property="height"/>
+        </table>
+        
+    </context>
+</generatorConfiguration>
