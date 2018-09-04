@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 
-    <properties resource="mybatis/mybatis.properties"/>
+    <properties resource="config/mybatis/mybatis.properties"/>
     <context id="SpringBootTables">
 
         <!-- 阻止生成自动注释 -->

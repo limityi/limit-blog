@@ -1,3 +1,4 @@
+
 server:
   port: 8080
   tomcat:
@@ -87,5 +88,19 @@ mybatis:
   # type-aliases扫描路径
   type-aliases-package: com.iclimit.blog.*.domain
   # mapper xml实现扫描路径
-  mapper-locations: classpath:config/mybatis/mappers/*/*.xml
+  mapper-locations: classpath:config/mybatis/mappers/*.xml
   executor-type: batch
+#mappers 多个接口时逗号隔开
+mapper:
+  mappers: com.iclimit.blog.common.config.MyMapper
+  not-empty: false
+  identity: MYSQL
+  order: after
+management:
+  endpoint:
+      shutdown:
+        enabled: true
+logging:
+  level:
+    org.apache.ibatis: debug
+    com.iclimit.blog.system.repository: debug
